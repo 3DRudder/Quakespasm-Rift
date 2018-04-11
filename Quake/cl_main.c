@@ -23,6 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "quakedef.h"
 #include "bgmusic.h"
+#include "RudderMovement.h"
 
 // we need to declare some mouse variables here, because the menu system
 // references them even when on a unix system.
@@ -685,9 +686,14 @@ void CL_SendCmd (void)
 	{
 	// get basic movement from keyboard
 		CL_BaseMove (&cmd);
+		
+	// get movement from rudder
+		RUD_Move(&cmd, cl_forwardspeed, cl_sidespeed, cl_backspeed);
 
 	// allow mice or other external controllers to add to the move
 		IN_Move (&cmd);
+
+		Con_Printf("Player orientation : %f, %f, %f\n", cl.viewangles[PITCH], cl.viewangles[ROLL], cl.viewangles[YAW]);
 
 	// send the unreliable message
 		CL_SendMove (&cmd);

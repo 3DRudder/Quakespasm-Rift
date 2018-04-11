@@ -53,6 +53,8 @@ typedef struct edict_s
 	entvars_t	v;			/* C exported fields from progs */
 
 	/* other fields from progs come immediately after */
+
+	float rudderyaw;
 } edict_t;
 
 #define	EDICT_FROM_AREA(l)	STRUCT_FROM_LINK(l,edict_t,area)

@@ -221,7 +221,7 @@ float CL_KeyState (kbutton_t *key)
 //==========================================================================
 
 cvar_t	cl_upspeed = {"cl_upspeed","200",CVAR_NONE};
-cvar_t	cl_forwardspeed = {"cl_forwardspeed","200", CVAR_ARCHIVE};
+cvar_t	cl_forwardspeed = { "cl_forwardspeed","200", CVAR_ARCHIVE };
 cvar_t	cl_backspeed = {"cl_backspeed","200", CVAR_ARCHIVE};
 cvar_t	cl_sidespeed = {"cl_sidespeed","350",CVAR_NONE};
 
@@ -297,7 +297,7 @@ void CL_BaseMove (usercmd_t *cmd)
 	if (cls.signon != SIGNONS)
 		return;
 
-	CL_AdjustAngles ();
+	//CL_AdjustAngles ();
 
 	Q_memset (cmd, 0, sizeof(*cmd));
 
@@ -322,14 +322,14 @@ void CL_BaseMove (usercmd_t *cmd)
 //
 // adjust for speed key
 //
-	if (cl_forwardspeed.value > 200 && cl_movespeedkey.value)
+	/*if (cl_forwardspeed.value > 200 && cl_movespeedkey.value)
 		cmd->forwardmove /= cl_movespeedkey.value;
 	if ((cl_forwardspeed.value > 200) ^ (in_speed.state & 1))
 	{
 		cmd->forwardmove *= cl_movespeedkey.value;
 		cmd->sidemove *= cl_movespeedkey.value;
 		cmd->upmove *= cl_movespeedkey.value;
-	}
+	}*/
 }
 
 

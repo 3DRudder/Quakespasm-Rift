@@ -22,6 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 #include "quakedef.h"
+#include "RudderMovement.h"
 #if defined(SDL_FRAMEWORK) || defined(NO_SDL_CONFIG)
 #if defined(USE_SDL2)
 #include <SDL2/SDL.h>
@@ -732,8 +733,11 @@ void IN_MouseMove(usercmd_t *cmd)
 
 void IN_Move(usercmd_t *cmd)
 {
-	IN_JoyMove(cmd);
-	IN_MouseMove(cmd);
+	//IN_JoyMove(cmd);
+
+	RUD_AddRudderYawToViewAngles(&cl);
+
+	//IN_MouseMove(cmd);
 }
 
 void IN_ClearStates (void)

@@ -23,6 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "quakedef.h"
 #include "vr.h"
+#include "RudderMovement.h"
 
 /*
 
@@ -776,6 +777,7 @@ void V_CalcRefdef (void)
 	r_refdef.vieworg[2] += 1.0/32;
 
 	VectorCopy (cl.viewangles, r_refdef.viewangles);
+
 	V_CalcViewRoll ();
 	V_AddIdle ();
 

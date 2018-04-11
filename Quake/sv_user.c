@@ -22,6 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // sv_user.c -- server code for moving users
 
 #include "quakedef.h"
+#include "RudderMovement.h"
 
 edict_t	*sv_player;
 
@@ -331,6 +332,12 @@ void SV_AirMove (void)
 	int			i;
 	vec3_t		wishvel;
 	float		fmove, smove;
+
+	RUD_AddRudderYawToPlayerMovement(sv_player, sv.time);
+
+	Con_Printf("SV_player angles : %f, %f, %f\n", sv_player->v.angles[PITCH], sv_player->v.angles[ROLL], sv_player->v.angles[YAW]);
+	Con_Printf("SV_player teleport_time : %f\n", sv_player->v.teleport_time);
+	Con_Printf("SV time : %f\n", sv.time);
 
 	AngleVectors (sv_player->v.angles, forward, right, up);
 
